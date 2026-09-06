@@ -35,31 +35,26 @@ bot_task = None
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """
-    Контекст жизненного цикла приложения.
-    Выполняется при старте и завершении.
-    """
     global bot_task
     logger.info("Инициализация базы данных...")
     init_db()
     logger.info("База данных готова.")
 
-    logger.info("Запуск Telegram-бота...")
-    bot_task = asyncio.create_task(start_bot())
-    logger.info("Бот запущен.")
+    # logger.info("Запуск Telegram-бота...")
+    # bot_task = asyncio.create_task(start_bot())
+    # logger.info("Бот запущен.")
 
-    yield  # Здесь приложение работает
+    yield
 
-    logger.info("Остановка Telegram-бота...")
-    if bot_task:
-        bot_task.cancel()
-        try:
-            await bot_task
-        except asyncio.CancelledError:
-            pass
-    await stop_bot()
-    logger.info("Бот остановлен.")
-
+    # logger.info("Остановка Telegram-бота...")
+    # if bot_task:
+    #     bot_task.cancel()
+    #     try:
+    #         await bot_task
+    #     except asyncio.CancelledError:
+    #         pass
+    # await stop_bot()
+    # logger.info("Бот остановлен.")
 
 # Создаём FastAPI приложение с lifespan
 app = FastAPI(
