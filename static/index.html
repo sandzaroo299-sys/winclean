@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Мойка окон</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="loading-screen" class="screen active">
+            <div class="spinner"></div>
+            <p>Загрузка...</p>
+        </div>
+
+        <div id="error-screen" class="screen">
+            <div class="card">
+                <h2>Откройте через Telegram</h2>
+                <p>Для работы Mini App необходимо открыть его через Telegram.</p>
+            </div>
+        </div>
+
+        <div id="register-screen" class="screen">
+            <div class="header">
+                <h1>Регистрация</h1>
+                <p>Выберите ваш дом и квартиру</p>
+            </div>
+            <div class="card form-card">
+                <label for="building-select">Дом</label>
+                <select id="building-select" class="input">
+                    <option value="">Выберите дом...</option>
+                </select>
+
+                <label for="apartment-input">Номер квартиры</label>
+                <input type="text" id="apartment-input" class="input" placeholder="Например, 12">
+
+                <label for="fullname-input">ФИО (необязательно)</label>
+                <input type="text" id="fullname-input" class="input" placeholder="Иванов Иван">
+
+                <label for="side-select">Сторона окон (необязательно)</label>
+                <select id="side-select" class="input">
+                    <option value="unknown">Не знаю</option>
+                    <option value="street">Улица</option>
+                    <option value="yard">Двор</option>
+                    <option value="north">Север</option>
+                    <option value="south">Юг</option>
+                    <option value="east">Восток</option>
+                    <option value="west">Запад</option>
+                </select>
+
+                <button id="register-btn" class="btn primary">Зарегистрироваться</button>
+            </div>
+        </div>
+
+        <div id="home-screen" class="screen">
+            <div class="header">
+                <h1>Мойка окон</h1>
+                <p id="user-info"></p>
+            </div>
+            <div class="actions">
+                <button id="new-request-btn" class="btn primary">Новая заявка</button>
+                <button id="my-requests-btn" class="btn secondary">Мои заявки</button>
+            </div>
+            <div id="requests-container" class="list"></div>
+        </div>
+
+        <div id="new-request-screen" class="screen">
+            <div class="header">
+                <button id="back-from-new" class="btn-back">← Назад</button>
+                <h1>Новая заявка</h1>
+            </div>
+            <div class="card form-card">
+                <label for="service-type">Тип услуги</label>
+                <select id="service-type" class="input">
+                    <option value="windows">Мытьё окон</option>
+                    <option value="balcony">Мытьё балкона</option>
+                    <option value="both">Комплекс</option>
+                </select>
+                <label for="comment-input">Комментарий</label>
+                <textarea id="comment-input" class="input" rows="3" placeholder="Дополнительная информация"></textarea>
+                <button id="submit-request-btn" class="btn primary">Отправить заявку</button>
+            </div>
+        </div>
+
+        <div id="my-requests-screen" class="screen">
+            <div class="header">
+                <button id="back-from-requests" class="btn-back">← Назад</button>
+                <h1>Мои заявки</h1>
+            </div>
+            <div id="my-requests-list" class="list"></div>
+        </div>
+
+        <div id="complaint-screen" class="screen">
+            <div class="header">
+                <button id="back-from-complaint" class="btn-back">← Назад</button>
+                <h1>Подать претензию</h1>
+            </div>
+            <div class="card form-card">
+                <p>Опишите проблему:</p>
+                <textarea id="complaint-comment" class="input" rows="4" placeholder="Что не так?"></textarea>
+                <p>Прикрепите фото (до 3):</p>
+                <input type="file" id="complaint-photos" accept="image/*" multiple>
+                <button id="submit-complaint-btn" class="btn primary">Отправить претензию</button>
+            </div>
+        </div>
+
+        <div id="toast" class="toast"></div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
