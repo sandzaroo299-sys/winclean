@@ -12,7 +12,7 @@ from typing import Optional, Tuple
 
 from astral import LocationInfo
 from astral.sun import sun
-import pytz
+
 
 from app.models import Building
 
